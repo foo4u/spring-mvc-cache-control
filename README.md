@@ -6,13 +6,13 @@ Spring MVC Cache Control is an extension to [Spring MVC][spring_mvc] that aims t
 
 1. Clone the repository from GitHub:
 
-		$ git clone https://github.com/foo4u/spring-mvc-cache-control
+		$ git clone git://github.com/foo4u/spring-mvc-cache-control
 
 2. Navigate into the cloned repository directory:
 
 		$ cd spring-mvc-cache-control
 
-3. The project uses [Gradle](http://gradle.org/) to build:
+3. The project uses [Gradle][gradle] to build:
 
 		$ ./gradlew build
 
@@ -35,3 +35,4 @@ Use the following Gradle task to build the JavaDoc
 _Note: The result will be available in 'docs/build/api'._
 
 [spring_mvc]: http://static.springsource.org/spring/docs/current/spring-framework-reference/html/mvc.html
+[gradle]: http://gradle.org/
