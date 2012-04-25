@@ -2,6 +2,10 @@
 
 Spring MVC Cache Control is an extension to [Spring MVC][spring_mvc] that aims to simplify implementing HTTP/1.1 Cache-Control headers for annotated MVC controllers.
 
+## Project Status
+
+This project is in an early development stage.  At this point the API and source code should not be considered stable.
+
 ## Checkout and Build from Source
 
 1. Clone the repository from GitHub:
@@ -30,7 +34,7 @@ Once complete, you may then import the projects into Eclipse as usual:
 
 Use the following Gradle task to build the JavaDoc
 
-	$ ./gradlew :docs:api
+	$ ./gradlew javadoc
 
 _Note: The result will be available in 'docs/build/api'._
 
