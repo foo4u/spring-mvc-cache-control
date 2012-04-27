@@ -1,0 +1,13 @@
+# Files to be ignored by git
+
+# Ignore Gradle artifacts
+.gradle
+
+# Ignore Eclipse artifacts
+.classpath
+.project
+.settings
+
+# Ignore build artifacts
+build
+

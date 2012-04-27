@@ -1,0 +1,29 @@
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+
+	sourceCompatibility=1.5
+	targetCompatibility=1.5
+
+	repositories {
+	    maven { url 'http://repo.springsource.org/plugins-release' }
+		maven { url "http://repo.springsource.org/ebr-maven-external" }
+		mavenCentral()
+	}
+
+	dependencies {
+		compile "org.springframework:spring-context:3.1.1.RELEASE"
+		compile "org.springframework:spring-web:3.1.1.RELEASE"
+		compile "org.springframework:spring-webmvc:3.1.1.RELEASE"
+		compile "javax.servlet:servlet-api:2.5"
+	    testCompile "junit:junit:4.9"
+	    testCompile "org.easymock:easymock:2.5.1"
+		testCompile "org.springframework:spring-test:3.1.1.RELEASE"
+	}
+}
+
+task wrapper(type: Wrapper) {
+    description = 'Generates gradlew[.bat] scripts'
+    gradleVersion = '1.0-rc-1'
+}
