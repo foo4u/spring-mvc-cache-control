@@ -11,12 +11,12 @@ final class CacheControlAnnotatedTestController {
 		return null;
 	}
 	
-	@CacheControl(policy = { CachePolicy.PUBLIC, CachePolicy.MUST_REVALIDATE })
+	@CacheControl(policy = { CachePolicy.MUST_REVALIDATE }, maxAge = 300)
 	public String handlePubliclyCachedPageAndRevalidatedRequest() {
 		return null;
 	}
 	
-	@CacheControl(policy = { CachePolicy.PUBLIC, CachePolicy.PROXY_REVALIDATE })
+	@CacheControl(policy = { CachePolicy.PUBLIC, CachePolicy.PROXY_REVALIDATE }, maxAge = 60)
 	public String handlePubliclyCachedPageAndProxyRevalidatedRequest() {
 		return null;
 	}

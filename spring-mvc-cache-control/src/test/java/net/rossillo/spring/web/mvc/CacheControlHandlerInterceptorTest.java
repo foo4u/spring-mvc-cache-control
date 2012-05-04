@@ -1,9 +1,10 @@
 package net.rossillo.spring.web.mvc;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -17,11 +18,20 @@ import org.springframework.web.method.HandlerMethod;
  */
 public final class CacheControlHandlerInterceptorTest {
 	
-	private CacheControlHandlerInterceptor interceptor = new CacheControlHandlerInterceptor();
+	private CacheControlHandlerInterceptor interceptor;
 	
-	private MockHttpServletRequest request = new MockHttpServletRequest();
-	private MockHttpServletResponse response = new MockHttpServletResponse();
-	private CacheControlAnnotatedTestController controller = new CacheControlAnnotatedTestController();
+	private MockHttpServletRequest request;
+	
+	private MockHttpServletResponse response;
+	
+	private final CacheControlAnnotatedTestController controller = new CacheControlAnnotatedTestController();
+	
+	@Before
+	public void setUp() {
+		interceptor = new CacheControlHandlerInterceptor();
+		request = new MockHttpServletRequest();
+		response = new MockHttpServletResponse();
+	}
 
 	@Test
 	public void testCacheControlPublic() throws Exception {
@@ -57,7 +67,7 @@ public final class CacheControlHandlerInterceptorTest {
 	}
 	
 	@Test
-	public void testCacheControlPublicMustRevalidate() throws Exception {
+	public void testCacheControlMustRevalidate() throws Exception {
 		
 		final HandlerMethod handler = new HandlerMethod(
 				controller, 
@@ -68,7 +78,6 @@ public final class CacheControlHandlerInterceptorTest {
 		System.err.println("CC: " + response.getHeader("Cache-Control"));
 		
 		assertNotNull(response.getHeader("Cache-Control"));
-		assertTrue(response.getHeader("Cache-Control").contains("public"));
 		assertTrue(response.getHeader("Cache-Control").contains("must-revalidate"));
 		assertFalse(response.getHeader("Cache-Control").contains("private"));
 	}
@@ -87,5 +96,28 @@ public final class CacheControlHandlerInterceptorTest {
 		assertNotNull(response.getHeader("Cache-Control"));
 		assertTrue(response.getHeader("Cache-Control").contains("private"));
 		assertFalse(response.getHeader("Cache-Control").contains("public"));
+	}
+	
+	@Test
+	public void testExpires() throws Exception {
+		
+		final HandlerMethod handler = new HandlerMethod(
+				controller, 
+				controller.getClass().getMethod("handlePrivatelyCachedPageRequest"));
+		
+		interceptor.preHandle(request, response, handler);
+		assertNotNull(response.getHeader("Expires"));
+	}
+	
+	@Test
+	public void testNoExpires() throws Exception {
+		
+		final HandlerMethod handler = new HandlerMethod(
+				controller, 
+				controller.getClass().getMethod("handlePrivatelyCachedPageRequest"));
+		
+		interceptor.setUseExpiresHeader(false);
+		interceptor.preHandle(request, response, handler);
+		assertFalse(response.containsHeader("Expires"));
 	}
 }
