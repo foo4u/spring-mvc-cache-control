@@ -9,5 +9,6 @@
 .settings
 
 # Ignore build artifacts
+bin/
 build
 
