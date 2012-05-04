@@ -20,7 +20,7 @@ public final class DemoController {
 	/**
 	 * Public home page, cacheable for 5 minutes.
 	 */
-	@CacheControl(policy = CachePolicy.PUBLIC, maxAge = 300)
+	@CacheControl(maxAge = 300)
 	@RequestMapping({"/", "/home.do"})
 	public String handleHomePageRequest(Model model) {
 		model.addAttribute("pageName", "Home");

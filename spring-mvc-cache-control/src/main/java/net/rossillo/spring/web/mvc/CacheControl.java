@@ -23,7 +23,7 @@ public @interface CacheControl {
 	 *
 	 * @see CachePolicy
 	 */
-	CachePolicy[] policy();
+	CachePolicy[] policy() default { };
 
 	/**
 	 *  The maximum amount of time, in seconds, that this content will be considered fresh.
