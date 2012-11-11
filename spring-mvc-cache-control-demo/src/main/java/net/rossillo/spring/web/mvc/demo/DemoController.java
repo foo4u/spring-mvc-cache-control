@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Scott Rossillo
  *
  */
+@CacheControl
 @Controller
 public final class DemoController {
 
@@ -28,10 +29,10 @@ public final class DemoController {
 	}
 	
 	/**
-	 * Directions page allowing for caching for 6 minutes, but requiring 
+	 * Directions page allowing caching for 15 minutes, but requiring 
 	 * re-revalidation before serving user a potentially stale resource.
 	 */
-	@CacheControl(policy = { CachePolicy.PUBLIC, CachePolicy.MUST_REVALIDATE }, maxAge = 360)
+	@CacheControl(policy = { CachePolicy.MUST_REVALIDATE }, maxAge = 15 * 60)
 	@RequestMapping("/directions.do")
 	public String handleProducDirectionsRequest(Model model) {
 		model.addAttribute("pageName", "Directions");
@@ -49,7 +50,7 @@ public final class DemoController {
 		return "page";
 	}
 	
-	@CacheControl(policy = { CachePolicy.PRIVATE, CachePolicy.MUST_REVALIDATE })
+	@CacheControl(policy = { CachePolicy.NO_STORE })
 	@RequestMapping("/balance.do")
 	public String handleBalancePageRequest(Model model) {
 		model.addAttribute("pageName", "Account Balanace");
@@ -57,7 +58,7 @@ public final class DemoController {
 	}
 	
 	/**
-	 * About page products no Cache-Control header.
+	 * About page produces the controller's default Cache-Control header.
 	 */
 	@RequestMapping("/about.do")
 	public String handleItemRequest(Model model) {

@@ -10,37 +10,32 @@
 <html>
 	<head>
 		<title>${pageName} | Spring MVC Cache-Control Demo</title>
-		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.0/build/cssreset/cssreset-min.css" />
-		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.0/build/cssfonts/cssfonts-min.css" />
-		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.0/build/cssbase/cssbase-min.css" />
-		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.5.0/build/cssgrids/grids-min.css" />
-		
-		<style type="text/css">
-			#doc {
-				font-family: Georgia;
-    			margin: auto;
-    			width: 960px;
-    			padding-bottom: 50px;
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet" />
+		<style>
+			aside {
+				margin-top: 20px;
 			}
 		</style>
-		
 	</head>
 	<body id="doc">
-		<div class="yui3-g">
-			<div class="yui3-u-3-4">
-				<h1>${pageName}</h1>
-				<p>This is the "${pageName}" page.</p>	
-			</div>
-			<div class="yui3-u-1-4">
-				<h2>Pages</h2>
-				
-				<ul>
-					<li><a href="${homeUrl}">Home</a>
-					<li><a href="${accountUrl}">Account</a>
-					<li><a href="${balanceUrl}">Balances</a>
-					<li><a href="${aboutUrl}">About</a>
-					<li><a href="${directionsUrl}">Directions</a>
-				</ul>
+		<div class="container-fluid">
+			<div class="row-fluid">		
+				<div class="span9">
+					<h1>${pageName}</h1>
+					<p>This is the "${pageName}" page.</p>	
+				</div>
+				<aside class="span3">
+					<div class="well well-small">
+						<ul class="nav nav-list">
+							<li class="nav-header">Pages</li>
+							<li><a href="${homeUrl}">Home</a>
+							<li><a href="${accountUrl}">Account</a>
+							<li><a href="${balanceUrl}">Balances</a>
+							<li><a href="${aboutUrl}">About</a>
+							<li><a href="${directionsUrl}">Directions</a>
+						</ul>
+					</div>
+				</aside>
 			</div>
 		</div>
 	</body>
