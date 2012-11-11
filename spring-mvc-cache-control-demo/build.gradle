@@ -3,4 +3,5 @@ apply plugin: 'jetty'
 
 dependencies {
 	compile project(':spring-mvc-cache-control')
+	runtime 'jstl:jstl:1.2'
 }
