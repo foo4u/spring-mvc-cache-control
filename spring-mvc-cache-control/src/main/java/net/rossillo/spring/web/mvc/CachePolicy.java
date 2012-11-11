@@ -24,7 +24,7 @@ public enum CachePolicy {
 	/**
 	 * Tells caches that they must obey any freshness information you give them.
 	 * HTTP allows caches to serve stale representations under special conditions; 
-	 * by specifying this policy, you’re telling the cache that you want it to 
+	 * by specifying this policy, you're telling the cache that you want it to 
 	 * strictly follow your rules.
 	 */
 	MUST_REVALIDATE("must-revalidate"),
