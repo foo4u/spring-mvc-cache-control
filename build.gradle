@@ -7,8 +7,7 @@ subprojects {
 	targetCompatibility=1.5
 
 	repositories {
-	    maven { url 'http://repo.springsource.org/plugins-release' }
-		maven { url "http://repo.springsource.org/ebr-maven-external" }
+	    maven { url 'http://repo.springsource.org/release' }
 		mavenCentral()
 	}
 
