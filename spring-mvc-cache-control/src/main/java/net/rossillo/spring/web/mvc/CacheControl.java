@@ -23,12 +23,12 @@ public @interface CacheControl {
 	 *
 	 * @see CachePolicy
 	 */
-	CachePolicy[] policy() default { };
+	CachePolicy[] policy() default { CachePolicy.NO_CACHE };
 
 	/**
 	 *  The maximum amount of time, in seconds, that this content will be considered fresh.
 	 */
-	int maxAge() default -1;
+	int maxAge() default 0;
 
 	/**
 	 * The maximum amount of time, in seconds, that this content will be considered fresh
