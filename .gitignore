@@ -12,3 +12,7 @@
 bin/
 build
 
+# Cloud Foundry deployment files
+manifest.yml
+
+
