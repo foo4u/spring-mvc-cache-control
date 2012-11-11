@@ -120,4 +120,14 @@ public final class CacheControlHandlerInterceptorTest {
 		interceptor.preHandle(request, response, handler);
 		assertFalse(response.containsHeader("Expires"));
 	}
+	
+	@Test
+	public void testHandleWithDefaultPolicy() throws Exception {
+		
+		final HandlerMethod handler = new HandlerMethod(
+				controller, 
+				controller.getClass().getMethod("handleWithDefaultPolicy"));
+		
+		assertNotNull(interceptor.getCacheControl(null, null, handler));
+	}
 }

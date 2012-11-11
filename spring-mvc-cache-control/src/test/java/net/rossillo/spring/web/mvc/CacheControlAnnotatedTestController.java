@@ -26,4 +26,8 @@ final class CacheControlAnnotatedTestController {
 		return null;
 	}
 	
+	public String handleWithDefaultPolicy() {
+		return null;
+	}
+	
 }

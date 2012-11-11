@@ -108,7 +108,7 @@ public class CacheControlHandlerInterceptor extends HandlerInterceptorAdapter im
 	 */
 	protected final long createExpiresHeader(final CacheControl cacheControl) {
 		
-		Calendar expires = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
+		final Calendar expires = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
 		
 		if (cacheControl.maxAge() >= 0) {
 			expires.add(Calendar.SECOND, cacheControl.maxAge());
@@ -138,7 +138,11 @@ public class CacheControlHandlerInterceptor extends HandlerInterceptorAdapter im
 		}
 		
 		final HandlerMethod handlerMethod = (HandlerMethod) handler;
-		final CacheControl cacheControl = handlerMethod.getMethodAnnotation(CacheControl.class);
+		CacheControl cacheControl = handlerMethod.getMethodAnnotation(CacheControl.class);
+		
+		if (cacheControl == null) {
+			return handlerMethod.getBeanType().getAnnotation(CacheControl.class);
+		}
 		
 		return cacheControl;
 	}
