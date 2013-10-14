@@ -1,24 +1,92 @@
+buildscript {
+	repositories {
+		maven { url "http://repo.springsource.org/plugins-release" }
+	}
+	dependencies {
+		classpath("org.springframework.build.gradle:propdeps-plugin:0.0.4")
+	}
+}
 
-subprojects {
+ext {
+	springVersion = '3.1.1.RELEASE'
+	artifactRepoBase = "https://repo.fugu.io/artifactory/"
+}
+
+configure(allprojects) { project ->
+	apply plugin: 'propdeps'
+	apply plugin: 'maven-publish'
+	group = "net.rossillo.mvc.cache"
+	version = '1.0.0' + (project.hasProperty('release') && project.ext.release ? '-RELEASE' : '-SNAPSHOT')
+}
+
+configure(subprojects) { project ->
 	apply plugin: 'java'
 	apply plugin: 'eclipse'
 
-	sourceCompatibility=1.5
-	targetCompatibility=1.5
+	sourceCompatibility=1.6
+	targetCompatibility=1.6
 
 	repositories {
-	    maven { url 'http://repo.springsource.org/release' }
+		maven { url 'http://repo.springsource.org/release' }
 		mavenCentral()
 	}
 
 	dependencies {
-		compile "org.springframework:spring-context:3.1.1.RELEASE"
-		compile "org.springframework:spring-web:3.1.1.RELEASE"
-		compile "org.springframework:spring-webmvc:3.1.1.RELEASE"
-		compile "javax.servlet:servlet-api:2.5"
-	    testCompile "junit:junit:4.9"
-	    testCompile "org.easymock:easymock:2.5.1"
-		testCompile "org.springframework:spring-test:3.1.1.RELEASE"
+		compile "org.springframework:spring-context:${springVersion}"
+		compile "org.springframework:spring-webmvc:${springVersion}"
+		provided "javax.servlet:servlet-api:2.5"
+		testCompile "junit:junit:4.9"
+		testCompile "org.springframework:spring-test:${springVersion}"
 	}
+
+	jar {
+			manifest.attributes['Specification-Title'] = 'Spring MVC Cache Control'
+			manifest.attributes['Implementation-Title'] = project.name
+			manifest.attributes['Implementation-Version'] = project.version
+	}
+
 }
 
+project('spring-mvc-cache-control') {
+	description = "Spring MVC Cache Control"
+	
+	task sourceJar(type: Jar) {
+		from sourceSets.main.allJava
+	}
+
+	task apiJar(type: Jar) {
+		classifier "javadoc"
+		from javadoc
+	}
+
+	publishing {
+		publications {
+			mavenJava(MavenPublication) {
+				from components.java
+				artifact sourceJar {
+						classifier "sources"
+				}
+				artifact apiJar {
+						classifier "javadoc"
+				}
+			}
+		}
+		repositories {
+			maven {
+				url "$artifactRepoBase/${project.version.endsWith('SNAPSHOT') ? 'libs-snapshot-local' : 'libs-release-local' }"
+				credentials {
+						username = project.ext.repoUser
+						password = project.ext.repoPass
+				}
+			}
+		}
+	}
+
+}
+
+project('spring-mvc-cache-control-demo') {
+	apply plugin: 'war'
+	dependencies {
+		compile project(':spring-mvc-cache-control')
+	}
+}

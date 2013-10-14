@@ -1,4 +1,5 @@
-rootProject.name = 'spring-mvc-additions'
+rootProject.name = 'spring-mvc-cache-control'
 
-include 'spring-mvc-cache-control', 'spring-mvc-cache-control-demo'
+include 'spring-mvc-cache-control'
+include 'spring-mvc-cache-control-demo'
 
