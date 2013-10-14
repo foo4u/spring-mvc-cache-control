@@ -40,9 +40,9 @@ configure(subprojects) { project ->
 	}
 
 	jar {
-			manifest.attributes['Specification-Title'] = 'Spring MVC Cache Control'
-			manifest.attributes['Implementation-Title'] = project.name
-			manifest.attributes['Implementation-Version'] = project.version
+		manifest.attributes['Specification-Title'] = 'Spring MVC Cache Control'
+		manifest.attributes['Implementation-Title'] = project.name
+		manifest.attributes['Implementation-Version'] = project.version
 	}
 
 }
