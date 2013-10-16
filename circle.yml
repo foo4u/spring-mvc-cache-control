@@ -2,17 +2,13 @@ machine:
   java:
     version: oraclejdk6
 
-test:
-  override:
-    - ./gradlew -q -PrepoUser=$REPO_USER -PrepoPass=$REPO_PASS test
-
 deployment:
   snapshot:
     branch: master
     commands:
-      - ./gradlew -PrepoUser=$REPO_USER -PrepoPass=$REPO_PASS clean publish
+      - ./gradlew clean publish
   release:
     branch: v1.0.x
     commands:
-      - ./gradlew -Prelease=true -PrepoUser=$REPO_USER -PrepoPass=$REPO_PASS clean publish
+      - ./gradlew clean publish
 
