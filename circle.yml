@@ -10,5 +10,5 @@ deployment:
   release:
     branch: v1.0.x
     commands:
-      - ./gradlew clean publish
+      - ./gradlew -Prelease=true clean publish
 
