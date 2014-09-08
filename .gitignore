@@ -15,4 +15,7 @@ build
 # Cloud Foundry deployment files
 manifest.yml
 
+# Ignore IntelliJ files
+.idea
+*.iml
 
