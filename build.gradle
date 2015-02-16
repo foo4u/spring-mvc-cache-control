@@ -16,7 +16,7 @@ configure(allprojects) { project ->
 	apply plugin: 'propdeps'
 	apply plugin: 'maven-publish'
 	group = "net.rossillo.mvc.cache"
-	version = '1.1.0' + (project.hasProperty('release') && project.ext.release ? '-RELEASE' : '-SNAPSHOT')
+	version = '1.1.1' + (project.hasProperty('release') && project.ext.release ? '-RELEASE' : '-SNAPSHOT')
 }
 
 configure(subprojects) { project ->
