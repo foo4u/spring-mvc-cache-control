@@ -12,7 +12,7 @@ Spring MVC Cache Control is an extension to [Spring MVC][spring_mvc] that aims t
 <dependency>
     <groupId>net.rossillo.mvc.cache</groupId>
     <artifactId>spring-mvc-cache-control</artifactId>
-    <version>1.1.0-RELEASE</version>
+    <version>1.1.1-RELEASE</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -20,7 +20,7 @@ Spring MVC Cache Control is an extension to [Spring MVC][spring_mvc] that aims t
 #### Gradle Projects
 
 ```
-compile 'net.rossillo.mvc.cache:spring-mvc-cache-control:1.1.0-RELEASE'
+compile 'net.rossillo.mvc.cache:spring-mvc-cache-control:1.1.1-RELEASE'
 ```
 
 ### Configuration
@@ -31,7 +31,7 @@ Simply include `net.rossillo.spring.web.mvc.CacheControlHandlerInterceptor` in y
 <mvc:interceptors>
     <bean class="net.rossillo.spring.web.mvc.CacheControlHandlerInterceptor" />
 </mvc:interceptors>
-````
+```
 
 ### Annotate Your Controllers
 
