@@ -1,10 +1,12 @@
-# Spring MVC Cache Control ![Build Status] [status]
+# Spring MVC Cache Control
+
+[![Maven Central][central-badge]][central] ![Build Status][status]
 
 Spring MVC Cache Control is an extension to [Spring MVC][spring_mvc] that aims to simplify implementing HTTP/1.1 Cache-Control headers for annotated MVC controllers.
 
 ## Usage
 
-### Add Spring MVC Cache Control as a dependency to your project.
+### Add Spring MVC Cache Control to Your Project.
 
 #### Maven Projects
 
@@ -103,3 +105,6 @@ Contributions are always welcome. Fork the repository, create a topic branch and
 [gradle]: http://gradle.org/
 [demo]: https://github.com/foo4u/spring-mvc-cache-control/blob/master/spring-mvc-cache-control-demo/src/main/java/net/rossillo/spring/web/mvc/demo/DemoController.java
 [status]: https://circleci.com/gh/foo4u/spring-mvc-cache-control.png?circle-token=2671c269c8ab085fb58617d58167ffe45bc70aac
+[central]: https://maven-badges.herokuapp.com/maven-central/net.rossillo.mvc.cache/spring-mvc-cache-control
+[central-badge]: https://maven-badges.herokuapp.com/maven-central/net.rossillo.mvc.cache/spring-mvc-cache-control/badge.svg
+
