@@ -37,7 +37,7 @@ Simply include `net.rossillo.spring.web.mvc.CacheControlHandlerInterceptor` in y
 
 ### Annotate Your Controllers
 
-Use the `@CacheControl` annoation on either (or both) type level `@Controller`s or method level `@RequestMapping`s. The handler interceptor will read the annotations and generate HTTP/1.1 complaint cache-control headers. For example:
+Use the `@CacheControl` annotation on either (or both) type level `@Controller`s or method level `@RequestMapping`s. The handler interceptor will read the annotations and generate HTTP/1.1 compliant cache-control headers. For example:
 
 ```
 @Controller
