@@ -27,12 +27,30 @@ compile 'net.rossillo.mvc.cache:spring-mvc-cache-control:1.1.1-RELEASE'
 
 ### Configuration
 
-Simply include `net.rossillo.spring.web.mvc.CacheControlHandlerInterceptor` in your Spring MVC `-servlet.xml` file:
+Simply include `net.rossillo.spring.web.mvc.CacheControlHandlerInterceptor` in your Spring MVC configuration.
+
+#### XML Web Application Context
 
 ```
 <mvc:interceptors>
     <bean class="net.rossillo.spring.web.mvc.CacheControlHandlerInterceptor" />
 </mvc:interceptors>
+```
+
+_For XML contexts, this usually defaults to `${appName}-servlet.xml`_
+
+#### Java Web Application Context
+
+```
+@Configuration
+public class WebMvcConfig extends WebMvcConfigurerAdapter implements WebMvcConfigurer
+{
+    @Override
+    public void addInterceptors(InterceptorRegistry registry)
+    {
+        registry.addInterceptor(new CacheControlHandlerInterceptor());
+    }
+}
 ```
 
 ### Annotate Your Controllers
