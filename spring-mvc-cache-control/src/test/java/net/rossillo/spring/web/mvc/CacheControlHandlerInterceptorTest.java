@@ -46,6 +46,7 @@ public final class CacheControlHandlerInterceptorTest {
 		
 		assertNotNull(response.getHeader("Cache-Control"));
 		assertTrue(response.getHeader("Cache-Control").contains("public"));
+		assertTrue(response.getHeader("Cache-Control").contains("max-age=86400"));
 		assertFalse(response.getHeader("Cache-Control").contains("private"));
 	}
 	
@@ -62,6 +63,7 @@ public final class CacheControlHandlerInterceptorTest {
 		
 		assertNotNull(response.getHeader("Cache-Control"));
 		assertTrue(response.getHeader("Cache-Control").contains("public"));
+		assertTrue(response.getHeader("Cache-Control").contains("max-age=1209600"));
 		assertTrue(response.getHeader("Cache-Control").contains("proxy-revalidate"));
 		assertFalse(response.getHeader("Cache-Control").contains("private"));
 	}
@@ -78,6 +80,7 @@ public final class CacheControlHandlerInterceptorTest {
 		System.err.println("CC: " + response.getHeader("Cache-Control"));
 		
 		assertNotNull(response.getHeader("Cache-Control"));
+		assertTrue(response.getHeader("Cache-Control").contains("max-age=18000"));
 		assertTrue(response.getHeader("Cache-Control").contains("must-revalidate"));
 		assertFalse(response.getHeader("Cache-Control").contains("private"));
 	}
@@ -95,6 +98,7 @@ public final class CacheControlHandlerInterceptorTest {
 		
 		assertNotNull(response.getHeader("Cache-Control"));
 		assertTrue(response.getHeader("Cache-Control").contains("private"));
+		assertTrue(response.getHeader("Cache-Control").contains("max-age=2592000"));
 		assertFalse(response.getHeader("Cache-Control").contains("public"));
 	}
 	
