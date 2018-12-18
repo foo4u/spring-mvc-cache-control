@@ -97,7 +97,25 @@ public final class CacheControlHandlerInterceptorTest {
 		assertTrue(response.getHeader("Cache-Control").contains("private"));
 		assertFalse(response.getHeader("Cache-Control").contains("public"));
 	}
-	
+
+	@Test
+	public void testCacheControlPrivateWithVary() throws Exception {
+
+		final HandlerMethod handler = new HandlerMethod(
+				controller,
+				controller.getClass().getMethod("handlePrivatelyCachedPageRequestWithVary"));
+
+		interceptor.preHandle(request, response, handler);
+
+		System.err.println("Vary: " + response.getHeader("Vary"));
+
+		assertNotNull(response.getHeader("Cache-Control"));
+		assertTrue(response.getHeader("Cache-Control").contains("private"));
+		assertFalse(response.getHeader("Cache-Control").contains("public"));
+		assertTrue(response.getHeader("Vary").contains("Accept"));
+
+	}
+
 	@Test
 	public void testExpires() throws Exception {
 		
