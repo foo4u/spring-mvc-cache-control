@@ -25,6 +25,11 @@ final class CacheControlAnnotatedTestController {
 	public String handlePrivatelyCachedPageRequest() {
 		return null;
 	}
+
+	@CacheControl(policy = CachePolicy.PRIVATE, maxAge = 360, vary = "Accept")
+	public String handlePrivatelyCachedPageRequestWithVary() {
+		return null;
+	}
 	
 	public String handleWithDefaultPolicy() {
 		return null;

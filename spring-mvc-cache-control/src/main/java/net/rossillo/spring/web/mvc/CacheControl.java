@@ -36,4 +36,9 @@ public @interface CacheControl {
 	 */
 	int sharedMaxAge() default -1;
 
+	/**
+	 * Sometimes caching need vary headers. E.g. 'Accept'.
+	 */
+	String[] vary() default {};
+
 }
